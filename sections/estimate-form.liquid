@@ -1,0 +1,3309 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{%- liquid
+      assign contact_form_class = 'isolate page-width--narrow section-{{ section.id }}-padding'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in page-width--narrow section-{{ section.id }}-padding'
+      endif
+    -%}
+{%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {{- 'icon-success.svg' | inline_asset_content -}}
+          {{ 'templates.contact.form.post_success' | t }}
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+
+        <fieldset id="Estimate1" style="display:block;">
+          <div class="form-control-field select-option" >
+            <label for="depth" class="form-control-field__label" >{{ section.settings.depth }}: <span class="depth-info">({{ section.settings.depth_info }})</span></label>
+            <div class="form-control-field__label">
+            <select id="depth" name="contact[depth]">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+            <span class="depth-dot" > . </span>
+          <select id="depth-decimal" name="contact[depth-decimal]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+            <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+            </div>
+            <div class="form-control-field select-option">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+              <div class="form-control-field__label">
+            <select id="width" name="contact[width]" >
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+              <span class="depth-dot" > . </span>
+          <select id="width-decimal" name="contact[width-decimal]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+    </div>
+  <div class="form-control-field select-option">
+            <label for="thickness" class="form-control-field__label">{{ section.settings.thickness }}: <span class="depth-info">({{ section.settings.thickness_info }})</span></label>
+    <div class="form-control-field__label">
+            <select id="thickness" name="contact[thickness]" >
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">8</option>
+            	<option value="9">9</option>
+            	<option value="10">10</option>
+            </select>
+    <span class="depth-dot" > . </span>
+          <select id="thickness-decimal" name="contact[thickness-decimal]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+  <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+    </div>
+  </div>
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric]" required class="form-control-field__input">
+          </div>
+<div class="form-control-field">
+            <label for="style" class="form-control-field__label">{{ section.settings.cushion_style }}:</label>
+            <input type="text" id="style" name="contact[style]" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity]" min="1" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="description" class="form-control-field__label">{{ section.settings.description }}:<span class="depth-info">({{ section.settings.description_info }})</span></label>
+            <textarea style="min-height: 135px;" id="description" name="contact[description]" class="form-control-field__input"></textarea>
+</div>
+  <p>
+                            <a href="javascript:void(0);" onclick="ShowHide('Estimate2')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+                        </p>
+        </fieldset>
+  <fieldset id="Estimate2" style="display:none;">
+          <div class="form-control-field select-option" >
+            <label for="depth" class="form-control-field__label" >{{ section.settings.depth }}: <span class="depth-info">({{ section.settings.depth_info }})</span></label>
+            <div class="form-control-field__label">
+            <select id="depth" name="contact[depth2]">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+            <span class="depth-dot" > . </span>
+          <select id="depth-decimal" name="contact[depth-decimal2]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+            <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+            </div>
+            <div class="form-control-field select-option">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+              <div class="form-control-field__label">
+            <select id="width" name="contact[width2]" >
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+              <span class="depth-dot" > . </span>
+          <select id="width-decimal" name="contact[width-decimal2]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+    </div>
+  <div class="form-control-field select-option">
+            <label for="thickness" class="form-control-field__label">{{ section.settings.thickness }}: <span class="depth-info">({{ section.settings.thickness_info }})</span></label>
+    <div class="form-control-field__label">
+            <select id="thickness" name="contact[thickness2]" >
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">8</option>
+            	<option value="9">9</option>
+            	<option value="10">10</option>
+            </select>
+    <span class="depth-dot" > . </span>
+          <select id="thickness-decimal" name="contact[thickness-decimal2]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+  <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+    </div>
+  </div>
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric2]" required class="form-control-field__input">
+          </div>
+<div class="form-control-field">
+            <label for="style" class="form-control-field__label">{{ section.settings.cushion_style }}:</label>
+            <input type="text" id="style" name="contact[style2]" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity2]" min="1" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="description" class="form-control-field__label">{{ section.settings.description }}:<span class="depth-info">({{ section.settings.description_info }})</span></label>
+            <textarea style="min-height: 135px;" id="description" name="contact[description2]" class="form-control-field__input"></textarea>
+</div>
+  <p>
+                            <a href="javascript:void(0);" onclick="ShowHide('Estimate3')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+                        </p>
+        </fieldset>
+  <fieldset id="Estimate3" style="display:none;">
+          <div class="form-control-field select-option" >
+            <label for="depth" class="form-control-field__label" >{{ section.settings.depth }}: <span class="depth-info">({{ section.settings.depth_info }})</span></label>
+            <div class="form-control-field__label">
+            <select id="depth" name="contact[depth3]">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+            <span class="depth-dot" > . </span>
+          <select id="depth-decimal" name="contact[depth-decimal3]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+            <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+            </div>
+            <div class="form-control-field select-option">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+              <div class="form-control-field__label">
+            <select id="width" name="contact[width3]" >
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+              <span class="depth-dot" > . </span>
+          <select id="width-decimal" name="contact[width-decimal3]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+    </div>
+  <div class="form-control-field select-option">
+            <label for="thickness" class="form-control-field__label">{{ section.settings.thickness }}: <span class="depth-info">({{ section.settings.thickness_info }})</span></label>
+    <div class="form-control-field__label">
+            <select id="thickness" name="contact[thickness3]" >
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">8</option>
+            	<option value="9">9</option>
+            	<option value="10">10</option>
+            </select>
+    <span class="depth-dot" > . </span>
+          <select id="thickness-decimal" name="contact[thickness-decimal3]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+  <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+    </div>
+  </div>
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric3]" required class="form-control-field__input">
+          </div>
+<div class="form-control-field">
+            <label for="style" class="form-control-field__label">{{ section.settings.cushion_style }}:</label>
+            <input type="text" id="style" name="contact[style3]" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity3]" min="1" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="description" class="form-control-field__label">{{ section.settings.description }}:<span class="depth-info">({{ section.settings.description_info }})</span></label>
+            <textarea style="min-height: 135px;" id="description" name="contact[description3]" class="form-control-field__input"></textarea>
+</div>
+  <p>
+                            <a href="javascript:void(0);" onclick="ShowHide('Estimate4')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+                        </p>
+        </fieldset>
+  <fieldset id="Estimate4" style="display:none;">
+          <div class="form-control-field select-option" >
+            <label for="depth" class="form-control-field__label" >{{ section.settings.depth }}: <span class="depth-info">({{ section.settings.depth_info }})</span></label>
+            <div class="form-control-field__label">
+            <select id="depth" name="contact[depth4]">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+            <span class="depth-dot" > . </span>
+          <select id="depth-decimal" name="contact[depth-decimal4]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+            <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+            </div>
+            <div class="form-control-field select-option">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+              <div class="form-control-field__label">
+            <select id="width" name="contact[width4]" >
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+              <span class="depth-dot" > . </span>
+          <select id="width-decimal" name="contact[width-decimal4]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+    </div>
+  <div class="form-control-field select-option">
+            <label for="thickness" class="form-control-field__label">{{ section.settings.thickness }}: <span class="depth-info">({{ section.settings.thickness_info }})</span></label>
+    <div class="form-control-field__label">
+            <select id="thickness" name="contact[thickness4]" >
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">8</option>
+            	<option value="9">9</option>
+            	<option value="10">10</option>
+            </select>
+    <span class="depth-dot" > . </span>
+          <select id="thickness-decimal" name="contact[thickness-decimal4]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+  <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+    </div>
+  </div>
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric4]" required class="form-control-field__input">
+          </div>
+<div class="form-control-field">
+            <label for="style" class="form-control-field__label">{{ section.settings.cushion_style }}:</label>
+            <input type="text" id="style" name="contact[style4]" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity4]" min="1" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="description" class="form-control-field__label">{{ section.settings.description }}:<span class="depth-info">({{ section.settings.description_info }})</span></label>
+            <textarea style="min-height: 135px;" id="description" name="contact[description4]" class="form-control-field__input"></textarea>
+</div>
+  <p>
+                            <a href="javascript:void(0);" onclick="ShowHide('Estimate5')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+                        </p>
+        </fieldset>
+  <fieldset id="Estimate5" style="display:none;">
+          <div class="form-control-field select-option" >
+            <label for="depth" class="form-control-field__label" >{{ section.settings.depth }}: <span class="depth-info">({{ section.settings.depth_info }})</span></label>
+            <div class="form-control-field__label">
+            <select id="depth" name="contact[depth5]">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+            <span class="depth-dot" > . </span>
+          <select id="depth-decimal" name="contact[depth-decimal5]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+            <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+            </div>
+            <div class="form-control-field select-option">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+              <div class="form-control-field__label">
+            <select id="width" name="contact[width5]" >
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+              <span class="depth-dot" > . </span>
+          <select id="width-decimal" name="contact[width-decimal5]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+    </div>
+  <div class="form-control-field select-option">
+            <label for="thickness" class="form-control-field__label">{{ section.settings.thickness }}: <span class="depth-info">({{ section.settings.thickness_info }})</span></label>
+    <div class="form-control-field__label">
+            <select id="thickness" name="contact[thickness5]" >
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">8</option>
+            	<option value="9">9</option>
+            	<option value="10">10</option>
+            </select>
+    <span class="depth-dot" > . </span>
+          <select id="thickness-decimal" name="contact[thickness-decimal5]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+  <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+    </div>
+  </div>
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric5]" required class="form-control-field__input">
+          </div>
+<div class="form-control-field">
+            <label for="style" class="form-control-field__label">{{ section.settings.cushion_style }}:</label>
+            <input type="text" id="style" name="contact[style5]" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity5]" min="1" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="description" class="form-control-field__label">{{ section.settings.description }}:<span class="depth-info">({{ section.settings.description_info }})</span></label>
+            <textarea style="min-height: 135px;" id="description" name="contact[description5]" class="form-control-field__input"></textarea>
+</div>
+  <p>
+                            <a href="javascript:void(0);" onclick="ShowHide('Estimate6')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+                        </p>
+        </fieldset>
+  <fieldset id="Estimate6" style="display:none;">
+          <div class="form-control-field select-option" >
+            <label for="depth" class="form-control-field__label" >{{ section.settings.depth }}: <span class="depth-info">({{ section.settings.depth_info }})</span></label>
+            <div class="form-control-field__label">
+            <select id="depth" name="contact[depth6]">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+            <span class="depth-dot" > . </span>
+          <select id="depth-decimal" name="contact[depth-decimal6]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+            <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+            </div>
+            <div class="form-control-field select-option">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+              <div class="form-control-field__label">
+            <select id="width" name="contact[width6]" >
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+              <span class="depth-dot" > . </span>
+          <select id="width-decimal" name="contact[width-decimal6]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+    </div>
+  <div class="form-control-field select-option">
+            <label for="thickness" class="form-control-field__label">{{ section.settings.thickness }}: <span class="depth-info">({{ section.settings.thickness_info }})</span></label>
+    <div class="form-control-field__label">
+            <select id="thickness" name="contact[thickness6]" >
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">8</option>
+            	<option value="9">9</option>
+            	<option value="10">10</option>
+            </select>
+    <span class="depth-dot" > . </span>
+          <select id="thickness-decimal" name="contact[thickness-decimal6]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+  <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+    </div>
+  </div>
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric6]" required class="form-control-field__input">
+          </div>
+<div class="form-control-field">
+            <label for="style" class="form-control-field__label">{{ section.settings.cushion_style }}:</label>
+            <input type="text" id="style" name="contact[style6]" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity6]" min="1" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="description" class="form-control-field__label">{{ section.settings.description }}:<span class="depth-info">({{ section.settings.description_info }})</span></label>
+            <textarea style="min-height: 135px;" id="description" name="contact[description6]" class="form-control-field__input"></textarea>
+</div>
+  <p>
+                            <a href="javascript:void(0);" onclick="ShowHide('Estimate7')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+                        </p>
+        </fieldset>
+  <fieldset id="Estimate7" style="display:none;">
+          <div class="form-control-field select-option" >
+            <label for="depth" class="form-control-field__label" >{{ section.settings.depth }}: <span class="depth-info">({{ section.settings.depth_info }})</span></label>
+            <div class="form-control-field__label">
+            <select id="depth" name="contact[depth7]">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+            <span class="depth-dot" > . </span>
+          <select id="depth-decimal" name="contact[depth-decimal7]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+            <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+            </div>
+            <div class="form-control-field select-option">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+              <div class="form-control-field__label">
+            <select id="width" name="contact[width7]" >
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+              <span class="depth-dot" > . </span>
+          <select id="width-decimal" name="contact[width-decimal7]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+    </div>
+  <div class="form-control-field select-option">
+            <label for="thickness" class="form-control-field__label">{{ section.settings.thickness }}: <span class="depth-info">({{ section.settings.thickness_info }})</span></label>
+    <div class="form-control-field__label">
+            <select id="thickness" name="contact[thickness7]" >
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">8</option>
+            	<option value="9">9</option>
+            	<option value="10">10</option>
+            </select>
+    <span class="depth-dot" > . </span>
+          <select id="thickness-decimal" name="contact[thickness-decimal7]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+  <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+    </div>
+  </div>
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric7]" required class="form-control-field__input">
+          </div>
+<div class="form-control-field">
+            <label for="style" class="form-control-field__label">{{ section.settings.cushion_style }}:</label>
+            <input type="text" id="style" name="contact[style7]" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity7]" min="1" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="description" class="form-control-field__label">{{ section.settings.description }}:<span class="depth-info">({{ section.settings.description_info }})</span></label>
+            <textarea style="min-height: 135px;" id="description" name="contact[description7]" class="form-control-field__input"></textarea>
+</div>
+  <p>
+                            <a href="javascript:void(0);" onclick="ShowHide('Estimate8')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+                        </p>
+        </fieldset>
+  <fieldset id="Estimate8" style="display:none;">
+          <div class="form-control-field select-option" >
+            <label for="depth" class="form-control-field__label" >{{ section.settings.depth }}: <span class="depth-info">({{ section.settings.depth_info }})</span></label>
+            <div class="form-control-field__label">
+            <select id="depth" name="contact[depth8]">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+            <span class="depth-dot" > . </span>
+          <select id="depth-decimal" name="contact[depth-decimal8]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+            <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+            </div>
+            <div class="form-control-field select-option">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+              <div class="form-control-field__label">
+            <select id="width" name="contact[width8]" >
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+              <span class="depth-dot" > . </span>
+          <select id="width-decimal" name="contact[width-decimal8]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+    </div>
+  <div class="form-control-field select-option">
+            <label for="thickness" class="form-control-field__label">{{ section.settings.thickness }}: <span class="depth-info">({{ section.settings.thickness_info }})</span></label>
+    <div class="form-control-field__label">
+            <select id="thickness" name="contact[thickness8]" >
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">8</option>
+            	<option value="9">9</option>
+            	<option value="10">10</option>
+            </select>
+    <span class="depth-dot" > . </span>
+          <select id="thickness-decimal" name="contact[thickness-decimal8]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+  <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+    </div>
+  </div>
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric8]" required class="form-control-field__input">
+          </div>
+<div class="form-control-field">
+            <label for="style" class="form-control-field__label">{{ section.settings.cushion_style }}:</label>
+            <input type="text" id="style" name="contact[style8]" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity8]" min="1" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="description" class="form-control-field__label">{{ section.settings.description }}:<span class="depth-info">({{ section.settings.description_info }})</span></label>
+            <textarea style="min-height: 135px;" id="description" name="contact[description8]" class="form-control-field__input"></textarea>
+</div>
+  <p>
+                            <a href="javascript:void(0);" onclick="ShowHide('Estimate9')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+                        </p>
+        </fieldset>
+  <fieldset id="Estimate9" style="display:none;">
+          <div class="form-control-field select-option" >
+            <label for="depth" class="form-control-field__label" >{{ section.settings.depth }}: <span class="depth-info">({{ section.settings.depth_info }})</span></label>
+            <div class="form-control-field__label">
+            <select id="depth" name="contact[depth9]">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+            <span class="depth-dot" > . </span>
+          <select id="depth-decimal" name="contact[depth-decimal9]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+            <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+            </div>
+            <div class="form-control-field select-option">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+              <div class="form-control-field__label">
+            <select id="width" name="contact[width9]" >
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+              <span class="depth-dot" > . </span>
+          <select id="width-decimal" name="contact[width-decimal9]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+    </div>
+  <div class="form-control-field select-option">
+            <label for="thickness" class="form-control-field__label">{{ section.settings.thickness }}: <span class="depth-info">({{ section.settings.thickness_info }})</span></label>
+    <div class="form-control-field__label">
+            <select id="thickness" name="contact[thickness9]" >
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">8</option>
+            	<option value="9">9</option>
+            	<option value="10">10</option>
+            </select>
+    <span class="depth-dot" > . </span>
+          <select id="thickness-decimal" name="contact[thickness-decimal9]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+  <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+    </div>
+  </div>
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric9]" required class="form-control-field__input">
+          </div>
+<div class="form-control-field">
+            <label for="style" class="form-control-field__label">{{ section.settings.cushion_style }}:</label>
+            <input type="text" id="style" name="contact[style9]" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity9]" min="1" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="description" class="form-control-field__label">{{ section.settings.description }}:<span class="depth-info">({{ section.settings.description_info }})</span></label>
+            <textarea style="min-height: 135px;" id="description" name="contact[description9]" class="form-control-field__input"></textarea>
+</div>
+  <p>
+                            <a href="javascript:void(0);" onclick="ShowHide('Estimate10')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+                        </p>
+        </fieldset>
+  <fieldset id="Estimate10" style="display:none;">
+          <div class="form-control-field select-option" >
+            <label for="depth" class="form-control-field__label" >{{ section.settings.depth }}: <span class="depth-info">({{ section.settings.depth_info }})</span></label>
+            <div class="form-control-field__label">
+            <select id="depth" name="contact[depth10]">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+            <span class="depth-dot" > . </span>
+          <select id="depth-decimal" name="contact[depth-decimal10]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+            <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+            </div>
+            <div class="form-control-field select-option">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+              <div class="form-control-field__label">
+            <select id="width" name="contact[width10]" >
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+                <option value="66">66</option>
+                <option value="67">67</option>
+                <option value="68">68</option>
+                <option value="69">69</option>
+                <option value="70">70</option>
+                <option value="71">71</option>
+                <option value="72">72</option>
+                <option value="73">73</option>
+                <option value="74">74</option>
+                <option value="75">75</option>
+                <option value="76">76</option>
+                <option value="77">77</option>
+                <option value="78">78</option>
+                <option value="79">79</option>
+                <option value="80">80</option>
+                <option value="81">81</option>
+                <option value="82">82</option>
+                <option value="83">83</option>
+                <option value="84">84</option>
+                <option value="85">85</option>
+                <option value="86">86</option>
+                <option value="87">87</option>
+                <option value="88">88</option>
+                <option value="89">89</option>
+                <option value="90">90</option>
+                <option value="91">91</option>
+                <option value="92">92</option>
+                <option value="93">93</option>
+                <option value="94">94</option>
+                <option value="95">95</option>
+                <option value="96">96</option>
+                <option value="97">97</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+                <option value="100">100</option>
+                <option value="101">101</option>
+                <option value="102">102</option>
+                <option value="103">103</option>
+                <option value="104">104</option>
+                <option value="105">105</option>
+                <option value="106">106</option>
+                <option value="107">107</option>
+                <option value="108">108</option>
+                <option value="109">109</option>
+                <option value="110">110</option>
+                <option value="111">111</option>
+                <option value="112">112</option>
+                <option value="113">113</option>
+                <option value="114">114</option>
+                <option value="115">115</option>
+                <option value="116">116</option>
+                <option value="117">117</option>
+                <option value="118">118</option>
+                <option value="119">119</option>
+                <option value="120">120</option>
+            </select>
+              <span class="depth-dot" > . </span>
+          <select id="width-decimal" name="contact[width-decimal10]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+              </div>
+    </div>
+  <div class="form-control-field select-option">
+            <label for="thickness" class="form-control-field__label">{{ section.settings.thickness }}: <span class="depth-info">({{ section.settings.thickness_info }})</span></label>
+    <div class="form-control-field__label">
+            <select id="thickness" name="contact[thickness10]" >
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+            	<option value="4">4</option>
+            	<option value="5">5</option>
+            	<option value="6">6</option>
+            	<option value="7">7</option>
+            	<option value="8">8</option>
+            	<option value="9">9</option>
+            	<option value="10">10</option>
+            </select>
+    <span class="depth-dot" > . </span>
+          <select id="thickness-decimal" name="contact[thickness-decimal10]" >
+                <option value="00">00</option>
+                <option value="25">25 (1/4)</option>
+                <option value="50">50 (1/2)</option>
+                <option value="75">75 (3/4)</option>
+            </select>
+  <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+    </div>
+  </div>
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric10]" required class="form-control-field__input">
+          </div>
+<div class="form-control-field">
+            <label for="style" class="form-control-field__label">{{ section.settings.cushion_style }}:</label>
+            <input type="text" id="style" name="contact[style10]" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity10]" min="1" required class="form-control-field__input">
+    </div>
+<div class="form-control-field">
+            <label for="description" class="form-control-field__label">{{ section.settings.description }}:<span class="depth-info">({{ section.settings.description_info }})</span></label>
+            <textarea style="min-height: 135px;" id="description" name="contact[description10]" class="form-control-field__input"></textarea>
+</div>
+        </fieldset>
+  
+  <fieldset>
+    {% if section.settings.your_information != blank %}<h3 class="estimate-form-same-section">&nbsp;{{ section.settings.your_information }}&nbsp;</h3>{% endif %}
+        <div class="form-control-field">
+          <label class="form-control-field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}:</label>
+          <input
+            class="form-control-field__input"
+            autocomplete="name"
+            type="text"
+            id="ContactForm-name"
+            name="contact[{{ 'templates.contact.form.name' | t }}]"
+            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+          >
+        </div>
+        <div class="form-control-field">
+          <label class="form-control-field__label" for="ContactForm-phone">Company:</label>
+          <input
+            type="text"
+            id="ContactForm-subject"
+            class="form-control-field__input"
+            name="contact[company]"
+            value=""
+          >
+        </div>
+        <div class="form-control-field field--with-error">
+          <label class="form-control-field__label" for="ContactForm-email">
+            Your Email:
+            {% comment %}<span aria-hidden="true">*</span>{% endcomment %}</label
+          >
+          <input
+            autocomplete="email"
+            type="email"
+            id="ContactForm-email"
+            class="form-control-field__input"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="ContactForm-email-error"
+            {% endif %}
+          >
+          
+          {%- if form.errors contains 'email' -%}
+            <small class="contact__field-error" id="ContactForm-email-error">
+              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+              <span class="form__message">
+                <span class="svg-wrapper">
+                  {{- 'icon-error.svg' | inline_asset_content -}}
+                </span>
+                {{- form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email -}}
+              </span>
+            </small>
+          {%- endif -%}
+        </div>
+      <div class="form-control-field">
+        <label class="form__label form-control-field__label" for="ContactForm-body">
+          Comments:
+        </label>
+        <div class="cus-form-control-field__input" >
+        <textarea
+          rows="10"
+          id="ContactForm-body"
+          class="text-area form-control-field__input"
+          name="contact[comments]"
+        >
+          {{- form.body -}}
+        </textarea>
+        
+        </div>
+      </div>
+  <div class="contact__button">
+        <button type="submit" class="underlined-link">
+          {% if section.settings.submit != blank %}{{ section.settings.submit }}{% else %}Submit{% endif %}
+        </button>
+      </div>
+  </fieldset>
+    {%- endform -%}
+{% if section.settings.note_description != blank %}<div class="note-details-section" >
+  <p style="text-align:left; margin-top: 20px;"><b>{% if section.settings.note != blank %}{{ section.settings.note }}{% else %}Note{% endif %}:</b> {{ section.settings.note_description }}</p>
+</div>{% endif %}
+<style>
+    form {
+        width: 100%;
+        max-width: 600px;
+        margin: auto;
+        font-family: Arial, sans-serif;
+    }
+    fieldset {
+        border: none;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background-color: #444;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #222;
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Estimate Form",
+  "tag": "section",
+  "class": "custom-estimate-form-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "label": "Depth",
+      "id": "depth",
+      "default": "Depth"
+    },
+    {
+      "type": "text",
+      "label": "Depth Info",
+      "id": "depth_info",
+      "default": "front to back"
+    },
+    {
+      "type": "text",
+      "label": "Width",
+      "id": "width",
+      "default": "Width"
+    },
+    {
+      "type": "text",
+      "label": "Width Info",
+      "id": "width_info",
+      "default": "left to right"
+    },
+    {
+      "type": "text",
+      "label": "Thickness",
+      "id": "thickness",
+      "default": "Thickness"
+    },
+    {
+      "type": "text",
+      "label": "Thickness Info",
+      "id": "thickness_info",
+      "default": "height"
+    },
+    {
+      "type": "text",
+      "label": "Width, height, Thickness Unit Text",
+      "id": "width_height_thickness_unit_text",
+      "default": "in inches"
+    },
+    {
+      "type": "text",
+      "label": "Fabric Pattern",
+      "id": "fabric_pattern",
+      "default": "Fabric Pattern"
+    },
+    {
+      "type": "text",
+      "label": "Cushion Style",
+      "id": "cushion_style",
+      "default": "Cushion Style"
+    },
+    {
+      "type": "text",
+      "label": "Quantity",
+      "id": "quantity"
+    },
+    {
+      "type": "text",
+      "label": "Description",
+      "id": "description",
+      "default": "Description"
+    },
+    {
+      "type": "text",
+      "label": "Description Info",
+      "id": "description_info",
+      "default": "chaise cushion, seat cushion, seat and back cushion hinge together, daybed, bench, etc"
+    },
+    {
+      "type": "text",
+      "label": "More estimate forms Title",
+      "id": "more_estimate_forms_title",
+      "default": "- click here for more estimate forms -"
+    },
+    {
+      "type": "text",
+      "label": "Your Information",
+      "id": "your_information",
+      "default": "Your Information"
+    },
+    {
+      "type": "text",
+      "label": "Your Name",
+      "id": "your_name",
+      "default": "Your Name"
+    },
+    {
+      "type": "text",
+      "label": "Company",
+      "id": "company",
+      "default": "Company"
+    },
+    {
+      "type": "text",
+      "label": "Your Email",
+      "id": "your_email",
+      "default": "Your Email"
+    },
+    {
+      "type": "text",
+      "label": "Comments",
+      "id": "comments",
+      "default": "Comments"
+    },
+    {
+      "type": "text",
+      "label": "Submit",
+      "id": "submit",
+      "default": "Submit"
+    },
+    {
+      "type": "url",
+      "label": "Submit URL",
+      "id": "submit_url"
+    },
+    {
+      "type": "text",
+      "label": "NOTE",
+      "id": "note",
+      "default": "NOTE"
+    },
+    {
+      "type": "text",
+      "label": "Note Description",
+      "id": "note_description",
+      "default": "If you need to request an estimate on more custom cushions, please specify so in the \"Comments\" section of this form."
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Custom Estimate Form"
+    }
+  ]
+}
+{% endschema %}
+<script>
+  function ShowHide(custom_id) {
+    $('#'+custom_id).toggle
+    $('#'+custom_id).slideToggle(300);
+}
+</script>
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

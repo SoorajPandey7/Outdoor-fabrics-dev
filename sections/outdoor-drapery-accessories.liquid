@@ -1,0 +1,187 @@
+<div class="outdoor-drapery-accessories-main-section" >
+  <div class="outdoor-drapery-accessories-inner-section" >
+    <div class="outdoor-drapery-accessories-items-section" >
+      {%- for block in section.blocks -%}
+        {% if block.settings.outdoor_drapery_options == 'Dura Rod Snap Mounts' %}
+          <div class="outdoor-drapery-accessories-title" >{{ block.settings.outdoor_drapery_options }}</div>
+          <div class="outdoor-drapery-accessories-item" >
+            <div class="outdoor-drapery-accessories-specifications" >
+              {% if block.settings.image != blank %}<div class="outdoor-drapery-accessories-image" >
+                <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" widtd="230" height="auto" />
+              </div>{% endif %}
+              <div class="outdoor-drapery-accessories-specifications-content" >
+                <table>
+                  <tbody>
+                    {% if block.settings.specifications_name_info != blank %}<tr>
+                      <td width="25%" >{% if block.settings.specifications_name_title != blank %}{{ block.settings.specifications_name_title }}{% endif %}</td>
+                      <td width="75%" >{{ block.settings.specifications_name_info }}</td>
+                    </tr>{% endif %}
+                    {% if block.settings.specifications_material_info != blank %}<tr>
+                      <td width="25%" >{% if block.settings.specifications_material_title != blank %}{{ block.settings.specifications_material_title }}{% endif %}</td>
+                      <td width="75%" >{{ block.settings.specifications_material_info }}</td>
+                    </tr>{% endif %}
+                    {% if block.settings.specifications_size_info != blank %}<tr>
+                      <td width="25%" >{% if block.settings.specifications_size_title != blank %}{{ block.settings.specifications_size_title }}{% endif %}</td>
+                      <td width="75%" >{{ block.settings.specifications_size_info }}</td>
+                    </tr>{% endif %}
+                    {% if block.settings.specifications_color_info != blank %}<tr>
+                      <td width="25%" >{% if block.settings.specifications_color_title != blank %}{{ block.settings.specifications_color_title }}{% endif %}</td>
+                      <td width="75%" >{{ block.settings.specifications_color_info }}</td>
+                    </tr>{% endif %}
+                    {% if block.settings.specifications_finials_info != blank %}<tr>
+                      <td width="25%" >{% if block.settings.specifications_finials_title != blank %}{{ block.settings.specifications_finials_title }}{% endif %}</td>
+                      <td width="75%" >{{ block.settings.specifications_finials_info }}</td>
+                    </tr>{% endif %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="outdoor-drapery-accessories-items-section" >
+      {%- for block in section.blocks -%}
+        {% if block.settings.outdoor_drapery_options == 'Dura Rod Finial' %}
+          <div class="outdoor-drapery-accessories-title" >{{ block.settings.outdoor_drapery_options }}</div>
+          <div class="outdoor-drapery-accessories-item" >
+            <div class="outdoor-drapery-accessories-specifications" >
+              {% if block.settings.image != blank %}<div class="outdoor-drapery-accessories-image" >
+                <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" widtd="230" height="auto" />
+              </div>{% endif %}
+              <div class="outdoor-drapery-accessories-specifications-content" >
+                <table>
+                  <tbody>
+                    {% if block.settings.specifications_name_info != blank %}<tr>
+                      <td width="25%" >{% if block.settings.specifications_name_title != blank %}{{ block.settings.specifications_name_title }}{% endif %}</td>
+                      <td width="75%" >{{ block.settings.specifications_name_info }}</td>
+                    </tr>{% endif %}
+                    {% if block.settings.specifications_material_info != blank %}<tr>
+                      <td width="25%" >{% if block.settings.specifications_material_title != blank %}{{ block.settings.specifications_material_title }}{% endif %}</td>
+                      <td width="75%" >{{ block.settings.specifications_material_info }}</td>
+                    </tr>{% endif %}
+                    {% if block.settings.specifications_size_info != blank %}<tr>
+                      <td width="25%" >{% if block.settings.specifications_size_title != blank %}{{ block.settings.specifications_size_title }}{% endif %}</td>
+                      <td width="75%" >{{ block.settings.specifications_size_info }}</td>
+                    </tr>{% endif %}
+                    {% if block.settings.specifications_color_info != blank %}<tr>
+                      <td width="25%" >{% if block.settings.specifications_color_title != blank %}{{ block.settings.specifications_color_title }}{% endif %}</td>
+                      <td width="75%" >{{ block.settings.specifications_color_info }}</td>
+                    </tr>{% endif %}
+                    {% if block.settings.specifications_finials_info != blank %}<tr>
+                      <td width="25%" >{% if block.settings.specifications_finials_title != blank %}{{ block.settings.specifications_finials_title }}{% endif %}</td>
+                      <td width="75%" >{{ block.settings.specifications_finials_info }}</td>
+                    </tr>{% endif %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Outdoor Drapery Accessori",
+  "tag": "section",
+  "class": "outdoor-drapery-accessories",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "outdoor_drapery_accessori",
+      "name": "Outdoor Drapery Accessori",
+      "settings": [
+        {
+          "type": "select",
+          "label": "Outdoor Drapery Options",
+          "id": "outdoor_drapery_options",
+          "default": "Dura Rod Snap Mounts",
+          "options": [
+            {
+              "label": "Dura Rod Snap Mounts",
+              "value": "Dura Rod Snap Mounts"
+            },
+            {
+              "label": "Dura Rod Finial",
+              "value": "Dura Rod Finial"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        },
+        {
+          "type": "text",
+          "label": "Specifications Name Title",
+          "id": "specifications_name_title",
+          "default": "Name:"
+        },
+        {
+          "type": "text",
+          "label": "Specifications Name Info",
+          "id": "specifications_name_info"
+        },
+        {
+          "type": "text",
+          "label": "Specifications Material Title",
+          "id": "specifications_material_title",
+          "default": "Material:"
+        },
+        {
+          "type": "text",
+          "label": "Specifications Material Info",
+          "id": "specifications_material_info"
+        },
+        {
+          "type": "text",
+          "label": "Specifications Size Title",
+          "id": "specifications_size_title",
+          "default": "Size:"
+        },
+        {
+          "type": "text",
+          "label": "Specifications Size Info",
+          "id": "specifications_size_info"
+        },
+        {
+          "type": "text",
+          "label": "Specifications Color Title",
+          "id": "specifications_color_title",
+          "default": "Color:"
+        },
+        {
+          "type": "text",
+          "label": "Specifications Color Info",
+          "id": "specifications_color_info"
+        },
+        {
+          "type": "text",
+          "label": "Specifications Finials Title",
+          "id": "specifications_finials_title",
+          "default": "Finials:"
+        },
+        {
+          "type": "richtext",
+          "label": "Specifications Finials Info",
+          "id": "specifications_finials_info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Outdoor Drapery Accessories"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

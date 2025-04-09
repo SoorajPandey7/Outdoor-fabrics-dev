@@ -1,0 +1,49 @@
+<div class="list-collections-main-section" >
+  <div class="list-collections-inner-section" >
+    {% for collection in page.metafields.custom.list_collections.value %}
+      {% assign min_price = blank %}
+      {% for product in collection.products %}
+        {% if min_price == blank or product.price < min_price %}
+          {% assign min_price = product.price %}
+        {% endif %}
+      {% endfor %}
+      <div class="collection-item">
+        <div class="collection-title-section" >
+          <h2>{{ collection.title }}</h2>
+        </div>
+        <div class="collection-image-section" >
+          <a href="{{ collection.url }}">
+            <img src="{{ collection.image | img_url: 'medium' }}" alt="{{ collection.title }}" width="135">
+          </a>
+        </div>
+        {% if min_price != blank %}<div class="collection-products-from-price-section" >
+            <p>From: {{ min_price | money }}</p>
+        </div>{% endif %}
+        <div class="collection-view-button-section" >
+          <a href="{{ collection.url }}">View Collection</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "List Collections",
+  "tag": "section",
+  "class": "list-collections-section",
+  "settings": [
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "List Collections"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

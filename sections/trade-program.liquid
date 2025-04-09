@@ -1,0 +1,199 @@
+<div class="trade-program-main-section" >
+  <div class="trade-program-inner-section" >
+    <div class="trade-program-information-section" >
+      {% if section.settings.title != blank %}<div class="trade-program-title-section" >
+        <div class="trade-program-title-item" >
+          {% if section.settings.logo != blank %}<img src="{{ section.settings.logo | img_url: 'master' }}" class="trade-program-image" alt="{{ section.settings.logo.alt }}" width="100%" height="auto" />{% endif %}
+          <h2 class="trade-program-title" >{{ section.settings.title }}</h2>
+        </div>
+      </div>{% endif %}
+      {% if section.settings.button_text != blank or section.settings.second_button_text != blank %}<div class="trade-program-buttons-section" >
+        <div class="trade-program-btn-inner-section" >
+          {% if section.settings.button_text != blank %}<div class="trade-program-button trade-program-button-first" >
+            <a href="{% if section.settings.button_url != blank %}{{ section.settings.button_url }}{% else %}javascript:void(0);{% endif %}" class="tp-btn" >{{ section.settings.button_text }}</a>
+          </div>{% endif %}
+          {% if section.settings.second_button_text != blank %}<div class="trade-program-button trade-program-button-second" >
+            <a href="{% if section.settings.second_button_url != blank %}{{ section.settings.second_button_url }}{% else %}javascript:void(0);{% endif %}" class="tp-btn" >{{ section.settings.second_button_text }}</a>
+          </div>{% endif %}
+        </div>
+      </div>{% endif %}
+      <div class="trade-program-info-section" >
+        <div class="trade-program-info-inner-section" >
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'trade_program_info' -%}
+                {% if block.settings.info_title != blank %}<div class="trade-program-info" >
+                  {{ block.settings.info_title }}
+                </div>{% endif %}
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="tp-text-with-image-main-section" >
+        <div class="tp-text-with-image-inner" >
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'text_with_image' -%}
+                {% if block.settings.text_with_image_title != blank or block.settings.text_with_image_content != blank or block.settings.image != blank %}<div class="tp-text-with-image-item {{ block.settings.image_position }}" >
+                  {% if block.settings.text_with_image_title != blank or block.settings.text_with_image_content != blank %}<div class="tp-text-with-image-item-content" >
+                    {% if block.settings.text_with_image_title != blank %}<div class="tp-text-with-image-item-title {{ block.settings.title_position }}" >
+                      {% if block.settings.text_with_image_logo != blank %}<img src="{{ block.settings.text_with_image_logo | img_url: 'master' }}" class="tp-text-with-image-item-logo" alt="{{ block.settings.text_with_image_logo.alt }}" width="100%" height="auto" />{% endif %}{{ block.settings.text_with_image_title }}
+                    </div>{% endif %}
+                    {% if block.settings.text_with_image_content != blank %}<div class="tp-text-with-image-item-description {{ block.settings.content_position }}">
+                      {{ block.settings.text_with_image_content }}
+                    </div>{% endif %}
+                  </div>{% endif %}
+                  {% if block.settings.image != blank %}<div class="tp-text-with-image-item-image" ><img src="{{ block.settings.image | img_url: 'master' }}" class="tp-text-with-image-item-img" alt="{{ block.settings.image.alt }}" width="100%" height="auto" /></div>{% endif %}
+                </div>{% endif %}
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Trade Program",
+  "tag": "section",
+  "class": "trade-program-section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title"
+    },
+    {
+      "type": "image_picker",
+      "label": "Logo",
+      "id": "logo"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "text",
+      "label": "Second Button text",
+      "id": "second_button_text"
+    },
+    {
+      "type": "url",
+      "label": "Second Button URL ",
+      "id": "second_button_url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trade_program_info",
+      "name": "Trade Program Info",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Info Title",
+          "id": "info_title"
+        }
+      ]
+    },
+    {
+      "type": "text_with_image",
+      "name": "Text With Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        },
+        {
+          "type": "select",
+          "label": "Image Position",
+          "id": "image_position",
+          "default": "right",
+          "options": [
+            {
+              "label": "Left",
+              "value": "left"
+            },
+            {
+              "label": "Right",
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "label": "Title",
+          "id": "text_with_image_title"
+        },
+        {
+          "type": "select",
+          "label": "Title Position",
+          "id": "title_position",
+          "default": "center",
+          "options": [
+            {
+              "label": "Left",
+              "value": "left"
+            },
+            {
+              "label": "Center",
+              "value": "center"
+            },
+            {
+              "label": "Right",
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "label": "Logo",
+          "id": "text_with_image_logo"
+        },
+        {
+          "type": "richtext",
+          "label": "Content",
+          "id": "text_with_image_content"
+        },
+        {
+          "type": "select",
+          "label": "Content Position",
+          "id": "content_position",
+          "default": "center",
+          "options": [
+            {
+              "label": "Left",
+              "value": "left"
+            },
+            {
+              "label": "Center",
+              "value": "center"
+            },
+            {
+              "label": "Right",
+              "value": "right"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trade Program"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

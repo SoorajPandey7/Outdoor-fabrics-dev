@@ -1,0 +1,196 @@
+<style>
+  .shipping-calculator-container {
+    width: 100%;
+    display: inline-block;
+  }
+  #shipping-calculator .shipping-calculator-field input.get-rates {
+    background: transparent;
+    color: #337ab7;
+    font-family: "Abhaya Libre", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.42857143;
+    cursor: pointer;
+    text-transform: lowercase;
+    padding: 0;
+    border: none;
+  }
+  #shipping-calculator .shipping-calculator-field input.get-rates:hover {
+    color: #23527c;
+  } 
+  #shipping-calculator .header-shipping-calculator-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  #shipping-calculator .header-shipping-calculator {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+  #shipping-calculator .header-shipping-calculator .heading-text {
+    font-size: 17px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 0;
+  }
+  #shipping-calculator .shipping-calculator-field {
+    float: left;
+    margin: 0 0.6em 1em 0;
+    font-size: 15px
+  }  
+  #shipping-calculator .shipping-calculator-field label {
+    display: block;
+    color: #57626d;
+    margin: 0 0 .3em;
+    font-size: 13px;
+  }
+  #shipping-calculator .shipping-calculator-field input {
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    font-size: 1em;
+    outline: 0;
+    border-radius: 2px;
+    -webkit-appearance: none;
+  } 
+  #shipping-calculator .shipping-calculator-field:last-child:before { 
+    content: "\00A0"; display: block; margin: 0 0 .3em; font-size: 13px; 
+  }
+  #shipping-calculator #wrapper-response {
+    clear: both;
+  }
+  #wrapper-response > * {margin: 0!important}
+  #shipping-calculator p.heading-rates-feedback {margin-bottom: 10px;}
+  #shipping-calculator #shipping-rates-feedback {
+    font-weight: 600;
+    margin-left: 0;
+    padding-left: 20px;
+  }
+  #shipping-calculator #shipping-rates-feedback li {list-style: disc}
+  #shipping-calculator #shipping-rates-feedback li:not(:last-child) {margin-bottom: 5px}
+
+  #shipping-calculator select,
+  #shipping-calculator input#address_zip {
+    min-height: 30px;
+    font-size: 13px;
+    padding: 0 1rem;
+    border: 1px solid #BBB;
+  }  
+  #shipping-calculator .shipping-calculator-fields {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }  
+  #shipping-calculator .shipping-calculator-field:last-child:before { 
+    content: none;
+  }
+  #chkInternational + label {
+    font-size: 13px;
+    color: #333;
+  }  
+  #shipping-calculator .shipping-calculator-field {
+    float: none;
+  }
+  @media (min-width: 1200px) {
+    #shipping-calculator select,
+    #shipping-calculator input#address_zip {max-width: 120px;}
+    .cart__blocks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .cart__blocks #shipping-calculator-wrapper {
+      width: calc(70% - 20px);
+    }
+    .cart__blocks .js-contents {
+      width: calc(30% - 20px);
+    }
+    .cart__blocks .cart__ctas, .cart__blocks .cart-errors {
+      width: 100%;
+    }
+  }
+  @media (max-width: 1199px) {
+    #shipipingCalcFields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    #shipipingCalcFields > * {margin: 0!important}
+    .int-shipping-checkbox {
+      margin-block: 20px;
+      border-bottom: 1px solid;
+      padding-bottom: 20px;
+    }
+  }  
+</style>
+<div id="shipping-calculator">
+  <div class="header-shipping-calculator-wrapper">
+    <div class="header-shipping-calculator">
+      <p class="heading-text">{{ settings.shipping_calculator_heading | default: 'Get shipping estimates' }}</p>
+    </div>
+    
+  </div>
+  <div class="shipping-calculator-wrapper">
+    <div id="shipipingCalcFields" class="shipping-calculator-fields">
+      <p class="shipping-calculator-field">
+        <label for="address_country">{{- 'sections.cart.country' | t -}}</label>
+        <select id="address_country" name="address[country]" data-default="{% if shop.customer_accounts_enabled and customer %}{{ customer.default_address.country }}{% elsif settings.shipping_calculator_default_country != '' %}{{ settings.shipping_calculator_default_country }}{% endif %}">
+          <option value="United States" data-provinces="[[&quot;Alabama&quot;,&quot;Alabama&quot;],[&quot;Alaska&quot;,&quot;Alaska&quot;],[&quot;American Samoa&quot;,&quot;American Samoa&quot;],[&quot;Arizona&quot;,&quot;Arizona&quot;],[&quot;Arkansas&quot;,&quot;Arkansas&quot;],[&quot;Armed Forces Americas&quot;,&quot;Armed Forces Americas&quot;],[&quot;Armed Forces Europe&quot;,&quot;Armed Forces Europe&quot;],[&quot;Armed Forces Pacific&quot;,&quot;Armed Forces Pacific&quot;],[&quot;California&quot;,&quot;California&quot;],[&quot;Colorado&quot;,&quot;Colorado&quot;],[&quot;Connecticut&quot;,&quot;Connecticut&quot;],[&quot;Delaware&quot;,&quot;Delaware&quot;],[&quot;District of Columbia&quot;,&quot;Washington DC&quot;],[&quot;Federated States of Micronesia&quot;,&quot;Micronesia&quot;],[&quot;Florida&quot;,&quot;Florida&quot;],[&quot;Georgia&quot;,&quot;Georgia&quot;],[&quot;Guam&quot;,&quot;Guam&quot;],[&quot;Hawaii&quot;,&quot;Hawaii&quot;],[&quot;Idaho&quot;,&quot;Idaho&quot;],[&quot;Illinois&quot;,&quot;Illinois&quot;],[&quot;Indiana&quot;,&quot;Indiana&quot;],[&quot;Iowa&quot;,&quot;Iowa&quot;],[&quot;Kansas&quot;,&quot;Kansas&quot;],[&quot;Kentucky&quot;,&quot;Kentucky&quot;],[&quot;Louisiana&quot;,&quot;Louisiana&quot;],[&quot;Maine&quot;,&quot;Maine&quot;],[&quot;Marshall Islands&quot;,&quot;Marshall Islands&quot;],[&quot;Maryland&quot;,&quot;Maryland&quot;],[&quot;Massachusetts&quot;,&quot;Massachusetts&quot;],[&quot;Michigan&quot;,&quot;Michigan&quot;],[&quot;Minnesota&quot;,&quot;Minnesota&quot;],[&quot;Mississippi&quot;,&quot;Mississippi&quot;],[&quot;Missouri&quot;,&quot;Missouri&quot;],[&quot;Montana&quot;,&quot;Montana&quot;],[&quot;Nebraska&quot;,&quot;Nebraska&quot;],[&quot;Nevada&quot;,&quot;Nevada&quot;],[&quot;New Hampshire&quot;,&quot;New Hampshire&quot;],[&quot;New Jersey&quot;,&quot;New Jersey&quot;],[&quot;New Mexico&quot;,&quot;New Mexico&quot;],[&quot;New York&quot;,&quot;New York&quot;],[&quot;North Carolina&quot;,&quot;North Carolina&quot;],[&quot;North Dakota&quot;,&quot;North Dakota&quot;],[&quot;Northern Mariana Islands&quot;,&quot;Northern Mariana Islands&quot;],[&quot;Ohio&quot;,&quot;Ohio&quot;],[&quot;Oklahoma&quot;,&quot;Oklahoma&quot;],[&quot;Oregon&quot;,&quot;Oregon&quot;],[&quot;Palau&quot;,&quot;Palau&quot;],[&quot;Pennsylvania&quot;,&quot;Pennsylvania&quot;],[&quot;Puerto Rico&quot;,&quot;Puerto Rico&quot;],[&quot;Rhode Island&quot;,&quot;Rhode Island&quot;],[&quot;South Carolina&quot;,&quot;South Carolina&quot;],[&quot;South Dakota&quot;,&quot;South Dakota&quot;],[&quot;Tennessee&quot;,&quot;Tennessee&quot;],[&quot;Texas&quot;,&quot;Texas&quot;],[&quot;Utah&quot;,&quot;Utah&quot;],[&quot;Vermont&quot;,&quot;Vermont&quot;],[&quot;Virgin Islands&quot;,&quot;U.S. Virgin Islands&quot;],[&quot;Virginia&quot;,&quot;Virginia&quot;],[&quot;Washington&quot;,&quot;Washington&quot;],[&quot;West Virginia&quot;,&quot;West Virginia&quot;],[&quot;Wisconsin&quot;,&quot;Wisconsin&quot;],[&quot;Wyoming&quot;,&quot;Wyoming&quot;]]">United States</option>
+          <option value="Canada" data-provinces="[[&quot;Alberta&quot;,&quot;Alberta&quot;],[&quot;British Columbia&quot;,&quot;British Columbia&quot;],[&quot;Manitoba&quot;,&quot;Manitoba&quot;],[&quot;New Brunswick&quot;,&quot;New Brunswick&quot;],[&quot;Newfoundland and Labrador&quot;,&quot;Newfoundland and Labrador&quot;],[&quot;Northwest Territories&quot;,&quot;Northwest Territories&quot;],[&quot;Nova Scotia&quot;,&quot;Nova Scotia&quot;],[&quot;Nunavut&quot;,&quot;Nunavut&quot;],[&quot;Ontario&quot;,&quot;Ontario&quot;],[&quot;Prince Edward Island&quot;,&quot;Prince Edward Island&quot;],[&quot;Quebec&quot;,&quot;Quebec&quot;],[&quot;Saskatchewan&quot;,&quot;Saskatchewan&quot;],[&quot;Yukon&quot;,&quot;Yukon&quot;]]">Canada</option>
+        </select>
+      </p>
+      <p class="shipping-calculator-field" id="address_province_container" style="display:none;">
+        <label for="address_province" id="address_province_label">{{- 'sections.cart.province' | t -}}</label>
+        <select id="address_province" name="address[province]" data-default="{% if shop.customer_accounts_enabled and customer and customer.default_address.province != '' %}{{ customer.default_address.province }}{% endif %}"></select>
+      </p>  
+      <p class="shipping-calculator-field">
+        <label for="address_zip">{{- 'sections.cart.zip_code' | t -}}</label>
+        <input type="text" id="address_zip" name="address[zip]"{% if shop.customer_accounts_enabled and customer %} value="{{ customer.default_address.zip }}"{% endif %} />
+      </p>
+      <p class="shipping-calculator-field calculate-button">
+        <label style="opacity:0">Calculate</label>
+        <input type="button" class="get-rates" value="{{ settings.shipping_calculator_submit_button_label | default: 'calculate shipping' }}" />
+      </p>
+    </div>
+    <div id="wrapper-response"></div>
+    <div class="int-shipping-checkbox">
+      <input id="chkInternational" type="checkbox"><label for="chkInternational">&nbsp;{{- 'sections.cart.ship_intl' | t -}}</label>
+    </div>
+  </div>
+</div>
+
+<script id="shipping-calculator-response-template" type="text/template">
+  {% raw %}
+    {{#if success}}      
+      {{#if rates}}
+        <p class="heading-rates-feedback heading-rates-feedback_en">There are {{ rates.length }} shipping rates for your address:</p>        
+      {{else}}
+        {% endraw %}
+          {{- 'sections.cart.no_shipping_rate' | t -}}
+        {% raw %}
+      {{/if}} 
+    {{/if}} 
+    <ul id="shipping-rates-feedback" {{#if success}} class="success" {{else}} class="error" {{/if}}>
+    {{#if success}}
+      {{#if rates}}  
+        {{#rates}}
+          <li>{{ name }}: {{price}}</li>
+        {{/rates}}    
+      {{/if}}    
+    {{else}}
+      {{ errorFeedback }}
+    {{/if}}
+    </ul>    
+  {% endraw %}
+</script>
+
+<!--[if lte IE 8]>
+<style> #shipping-calculator { display: none; } </style>
+<![endif]-->

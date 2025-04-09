@@ -1,0 +1,138 @@
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+<div class="cushions-decorating-studio-main-section" >
+  <div class="cushions-decorating-studio-inner-section" >
+    <div class="cushions-decorating-studio-animation-section" >
+      <div class="cushions-decorating-studio-slider-animation-section" >
+        <div class="cushions-decorating-studio-sliderinner-section" >
+            <div class="cushions-decorating-studio-image-section" >
+              <img class="cushions-decorating-studio-img" name="curtain" src="https://cdn.shopify.com/s/files/1/0641/0466/1162/files/blank.jpg?v=1743760038" alt="Decorating Studio" />
+            </div>
+            <div class="cushions-decorating-studio-thumbnail-title-section" >
+              <h3 class="cushions-decorating-studio-thumbnail-head" >{{ section.settings.fabrics_option_title }}</h3>
+            </div>
+        </div>
+      </div>
+      <div class="cushions-decorating-studio-thumbnail-main-section" >
+        <div class="cushions-decorating-studio-thumbnail-inner-section" >
+          <div class="cushions-decorating-studio-thumbnail-items" >
+            <div class="cushions-decorating-studio-thumbnail-items-inner" >
+              {%- for block in section.blocks -%}
+                {% if block.settings.thumbnail_image != blank %}
+                  <div class="cushions-decorating-studio-thumbnail-image-section" >
+                    <img class="cushions-decorating-studio-thumbnail-img" src="{{ block.settings.thumbnail_image | img_url: 'master' }}" onmouseover="document.curtain.src='{{ block.settings.main_image | img_url: 'master' }}'" alt="{{ block.settings.thumbnail_image.alt }}" width="100%" height="auto" />
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cushions-decorating-studio-disclaimer-section" >
+      <div class="disclaimer bottom-shadow" >
+        {{ section.settings.decorating_studio_description }}
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  $('.cushions-decorating-studio-thumbnail-items-inner').slick({
+  dots: false,
+  arrows: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 6,
+  slidesToScroll: 6,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        infinite: true,
+        dots: false,
+        arrows: true
+      }
+    },
+    {
+      breakpoint: 991,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        infinite: true,
+        dots: false,
+        arrows: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+</script>
+{% schema %}
+{
+  "name": "Cushion Decorating Studio",
+  "tag": "section",
+  "class": "cushions-decorating-studio-section",
+  "settings": [
+    {
+      "type": "richtext",
+      "label": "Decorating Studio Description",
+      "id": "decorating_studio_description"
+    },
+    {
+      "type": "text",
+      "label": "Fabrics Option Title",
+      "id": "fabrics_option_title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "decorating_studio",
+      "name": "Decorating Studio",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Main Image",
+          "id": "main_image"
+        },
+        {
+          "type": "image_picker",
+          "label": "Thumbnail Image",
+          "id": "thumbnail_image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cushion Decorating Studio"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

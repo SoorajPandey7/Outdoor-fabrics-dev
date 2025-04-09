@@ -1,0 +1,590 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{%- liquid
+      assign contact_form_class = 'isolate page-width--narrow section-{{ section.id }}-padding'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in page-width--narrow section-{{ section.id }}-padding'
+      endif
+    -%}
+{%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {{- 'icon-success.svg' | inline_asset_content -}}
+          {{ 'templates.contact.form.post_success' | t }}
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+  
+        <fieldset >
+          
+          {% if section.settings.your_information != blank %}<h2 class="wholesale-account-form-same-section">&nbsp;Owner or Authorized Officer&nbsp;</h2>{% endif %}
+          <div class="wholesale-account-application-main-section" >
+            <div class="form-content-section">
+              <div class="form-control-field">
+                <label class="form-control-field__label" for="ContactForm-name">* Name:</label>
+                <input
+                  class="form-control-field__input"
+                  autocomplete="name"
+                  type="text"
+                  id="ContactForm-name"
+                  name="contact[{{ 'templates.contact.form.name' | t }}]"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                >
+              </div>
+    
+              <div class="form-control-field field--with-error">
+                <label class="form-control-field__label" for="ContactForm-email">
+                  * Email:
+                  {% comment %}<span aria-hidden="true">*</span>{% endcomment %}</label
+                >
+                <input
+                  autocomplete="email"
+                  type="email"
+                  id="ContactForm-email"
+                  class="form-control-field__input"
+                  name="contact[email]"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  aria-required="true"
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"
+                    aria-describedby="ContactForm-email-error"
+                  {% endif %}
+                >
+                
+                {%- if form.errors contains 'email' -%}
+                  <small class="contact__field-error" id="ContactForm-email-error">
+                    <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                    <span class="form__message">
+                      <span class="svg-wrapper">
+                        {{- 'icon-error.svg' | inline_asset_content -}}
+                      </span>
+                      {{- form.errors.translated_fields.email | capitalize }}
+                      {{ form.errors.messages.email -}}
+                    </span>
+                  </small>
+                {%- endif -%}
+              </div>
+    
+              <div class="form-control-field">
+                <label class="form-control-field__label" for="ContactForm-phone">* Phone:</label>
+                <input
+                  type="tel"
+                  id="ContactForm-phone"
+                  class="form-control-field__input"
+                  autocomplete="tel"
+                  name="contact[{{ 'templates.contact.form.phone' | t }}]"
+                  pattern="[0-9\-]*"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                >
+              </div>
+
+              <div class="form-control-field">
+                <label class="form-control-field__label" for="ContactForm-phone">* Account Type Desired:</label>
+                <div class="account-type-button" >
+                  <div class="account-type-inner-section" >
+                    <input type="radio" id="CreditCard" name="contact[account_type]" required>
+                    <label for="radio">CreditCard</label>
+                  </div>
+                  <div class="account-type-inner-section" >
+                    <input type="radio" id="ProForma" name="contact[account_type]" required>
+                    <label for="radio">ProForma</label>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          
+          {% if section.settings.your_information != blank %}<h2 class="wholesale-account-form-same-section">&nbsp;Business Information&nbsp;</h2>{% endif %}
+          <div class="wholesale-account-application-main-section" >
+            <div class="form-content-section">
+              
+              <div class="form-control-field">
+                <label class="form-control-field__label" for="ContactForm-phone">This business is a:</label>
+                <div class="account-type-button" >
+                  <div class="account-type-inner-section" >
+                    <input type="radio" id="SoleProprietorship" name="contact[bussiness]" required value="SoleProprietorship" >
+                    <label for="radio">SoleProprietorship</label>
+                  </div>
+                  <div class="account-type-inner-section" >
+                    <input type="radio" id="Partnership" name="contact[bussiness]" required value="Partnership" >
+                    <label for="radio">Partnership</label>
+                  </div>
+                  <div class="account-type-inner-section" >
+                    <input type="radio" id="Corporation" name="contact[bussiness]" required value="Corporation" >
+                    <label for="radio">Corporation</label>
+                  </div>
+                  <div class="account-type-inner-section" >
+                    <input type="radio" id="SCorporation" name="contact[bussiness]" required value="SCorporation">
+                    <label for="radio">SCorporation</label>
+                  </div>
+                  <div class="account-type-inner-section" >
+                    <input type="radio" id="LLC" name="contact[bussiness]" required value="LLC" >
+                    <label for="radio">LLC</label>
+                  </div>
+                  <div class="account-type-inner-section" >
+                    <input type="radio" id="Other" name="contact[bussiness]" required value="Other" >
+                    <label for="radio">Other</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-control-field">
+                <label for="business-type" class="form-control-field__label">Business Type:</label>
+                <input type="text" id="business-type" name="contact[business_type]" class="form-control-field__input">
+              </div>
+
+              <div class="form-control-field">
+                <label for="established" class="form-control-field__label">Established On:</label>
+                <input type="date" id="established" name="contact[established]" class="form-control-field__input" style="width:200px;">
+              </div>
+
+              <div class="form-control-field">
+                <label for="name_firm" class="form-control-field__label">Name of Firm:</label>
+                <input type="text" id="name_firm" name="contact[name_firm]" class="form-control-field__input">
+              </div>
+
+              <div class="form-control-field">
+                <label class="form-control-field__label" for="business_phone">Phone:</label>
+                <input
+                  type="tel"
+                  id="business_phone"
+                  class="form-control-field__input"
+                  autocomplete="tel"
+                  name="contact[business_Phone]"
+                  pattern="[0-9\-]*"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                >
+              </div>
+
+              <div class="form-control-field">
+                <label for="address_1" class="form-control-field__label">Address 1:</label>
+                <input type="text" id="address_1" name="contact[address_1]" class="form-control-field__input">
+              </div>
+
+              <div class="form-control-field">
+                <label for="address_2" class="form-control-field__label">Address 2:</label>
+                <input type="text" id="address_2" name="contact[address_2]" class="form-control-field__input">
+              </div>
+
+              <div class="form-control-field">
+                <label for="city" class="form-control-field__label">City:</label>
+                <input type="text" id="city" name="contact[city]" class="form-control-field__input">
+              </div>
+
+              <div class="form-control-field">
+                <label for="State" class="form-control-field__label">State:</label>
+                <select id="state" name="contact[state]" class="form-control-field__input" >
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="DC">District of Columbia</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
+                </select>
+              </div>
+              
+              <div class="form-control-field">
+                <label for="zip-code" class="form-control-field__label">Zip Code:</label>
+                <input type="text" id="zip-code" name="contact[zip_code]" class="form-control-field__input">
+              </div>
+              
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          
+          {% if section.settings.your_information != blank %}<h2 class="wholesale-account-form-same-section">&nbsp;Tax Information&nbsp;</h2>{% endif %}
+          <div class="wholesale-account-application-main-section" >
+            <div class="form-content-section">
+
+              <div class="form-control-field">
+                <label for="SSN or FEIN" class="form-control-field__label">SSN or FEIN:</label>
+                <input type="number" id="ssn_or_fein" name="contact[SSN_FEIN]" class="form-control-field__input">
+              </div>
+
+              <div class="form-control-field">
+                <label for="State Resale Tax" class="form-control-field__label">State Resale Tax:</label>
+                <input type="number" id="state_resale_tax" name="contact[state_resale_tax]" class="form-control-field__input">
+              </div>
+              
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          
+          {% if section.settings.your_information != blank %}<h2 class="wholesale-account-form-same-section">&nbsp;Trade References&nbsp;</h2>{% endif %}
+          <div class="wholesale-account-application-main-section" >
+            <h4 class="trade-references-title">Reference 1</h4>
+            <div class="form-content-section">
+
+              <div class="form-control-field">
+                <label for="Company Name" class="form-control-field__label">Company Name:</label>
+                <input type="text" id="company_name:" name="contact[company_name]" class="form-control-field__input">
+              </div>
+
+              <div class="form-control-field">
+                <label for="Company Phone" class="form-control-field__label">Company Phone:</label>
+                <input type="text" id="company_phone" name="contact[company_phone]" class="form-control-field__input">
+              </div>
+              
+              <div class="form-control-field">
+                <label for="Account" class="form-control-field__label">Account #:</label>
+                <input type="text" id="account" name="contact[account]" class="form-control-field__input">
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="wholesale-account-application-main-section" >
+            <h4 class="trade-references-title">Reference 2</h4>
+            <div class="form-content-section">
+
+              <div class="form-control-field">
+                <label for="Company Name" class="form-control-field__label">Company Name:</label>
+                <input type="text" id="company_name:" name="contact[company_name2]" class="form-control-field__input">
+              </div>
+
+              <div class="form-control-field">
+                <label for="Company Phone" class="form-control-field__label">Company Phone:</label>
+                <input type="text" id="company_phone" name="contact[company_phone2]" class="form-control-field__input">
+              </div>
+              
+              <div class="form-control-field">
+                <label for="Account" class="form-control-field__label">Account #:</label>
+                <input type="text" id="account" name="contact[account2]" class="form-control-field__input">
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="wholesale-account-application-main-section" >
+            <h4 class="trade-references-title">Reference 3</h4>
+            <div class="form-content-section">
+
+              <div class="form-control-field">
+                <label for="Company Name" class="form-control-field__label">Company Name:</label>
+                <input type="text" id="company_name:" name="contact[company_name3]" class="form-control-field__input">
+              </div>
+
+              <div class="form-control-field">
+                <label for="Company Phone" class="form-control-field__label">Company Phone:</label>
+                <input type="text" id="company_phone" name="contact[company_phone3]" class="form-control-field__input">
+              </div>
+              
+              <div class="form-control-field">
+                <label for="Account" class="form-control-field__label">Account #:</label>
+                <input type="text" id="account" name="contact[account3]" class="form-control-field__input">
+              </div>
+              
+            </div>
+          </div>
+          
+        </fieldset>
+  
+  <fieldset class="account-aplication-submit-button">
+    <div class="contact__button">
+        <a href="/" class="underlined-link">
+          Cancel
+        </a>
+      </div>
+  <div class="contact__button">
+        <button type="submit" class="underlined-link" style="background-color: #449944;">
+          {% if section.settings.submit != blank %}{{ section.settings.submit }}{% else %}Submit{% endif %}
+        </button>
+      </div>
+  </fieldset>
+    {%- endform -%}
+<style>
+    form {
+        width: 100%;
+        max-width: 600px;
+        margin: auto;
+        font-family: Arial, sans-serif;
+    }
+    fieldset {
+        border: none;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background-color: #444;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #222;
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Wholesale Account",
+  "tag": "section",
+  "class": "wholesale-account-application-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "label": "Depth",
+      "id": "depth",
+      "default": "Depth"
+    },
+    {
+      "type": "text",
+      "label": "Depth Info",
+      "id": "depth_info",
+      "default": "front to back"
+    },
+    {
+      "type": "text",
+      "label": "Width",
+      "id": "width",
+      "default": "Width"
+    },
+    {
+      "type": "text",
+      "label": "Width Info",
+      "id": "width_info",
+      "default": "left to right"
+    },
+    {
+      "type": "text",
+      "label": "Thickness",
+      "id": "thickness",
+      "default": "Thickness"
+    },
+    {
+      "type": "text",
+      "label": "Thickness Info",
+      "id": "thickness_info",
+      "default": "height"
+    },
+    {
+      "type": "text",
+      "label": "Width, height, Thickness Unit Text",
+      "id": "width_height_thickness_unit_text",
+      "default": "in inches"
+    },
+    {
+      "type": "text",
+      "label": "Fabric Pattern",
+      "id": "fabric_pattern",
+      "default": "Fabric Pattern"
+    },
+    {
+      "type": "text",
+      "label": "Cushion Style",
+      "id": "cushion_style",
+      "default": "Cushion Style"
+    },
+    {
+      "type": "text",
+      "label": "Quantity",
+      "id": "quantity"
+    },
+    {
+      "type": "text",
+      "label": "Description",
+      "id": "description",
+      "default": "Description"
+    },
+    {
+      "type": "text",
+      "label": "Description Info",
+      "id": "description_info",
+      "default": "chaise cushion, seat cushion, seat and back cushion hinge together, daybed, bench, etc"
+    },
+    {
+      "type": "text",
+      "label": "More estimate forms Title",
+      "id": "more_estimate_forms_title",
+      "default": "- click here for more estimate forms -"
+    },
+    {
+      "type": "text",
+      "label": "Your Information",
+      "id": "your_information",
+      "default": "Your Information"
+    },
+    {
+      "type": "text",
+      "label": "Your Name",
+      "id": "your_name",
+      "default": "Your Name"
+    },
+    {
+      "type": "text",
+      "label": "Company",
+      "id": "company",
+      "default": "Company"
+    },
+    {
+      "type": "text",
+      "label": "Your Email",
+      "id": "your_email",
+      "default": "Your Email"
+    },
+    {
+      "type": "text",
+      "label": "Comments",
+      "id": "comments",
+      "default": "Comments"
+    },
+    {
+      "type": "text",
+      "label": "Submit",
+      "id": "submit",
+      "default": "Submit"
+    },
+    {
+      "type": "url",
+      "label": "Submit URL",
+      "id": "submit_url"
+    },
+    {
+      "type": "text",
+      "label": "NOTE",
+      "id": "note",
+      "default": "NOTE"
+    },
+    {
+      "type": "text",
+      "label": "Note Description",
+      "id": "note_description",
+      "default": "If you need to request an estimate on more custom cushions, please specify so in the \"Comments\" section of this form."
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Wholesale Account"
+    }
+  ]
+}
+{% endschema %}
+<script>
+  function ShowHide(custom_id) {
+    $('#'+custom_id).toggle
+    $('#'+custom_id).slideToggle(300);
+}
+</script>
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

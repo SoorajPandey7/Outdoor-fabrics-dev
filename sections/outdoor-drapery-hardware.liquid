@@ -1,0 +1,138 @@
+<div class="outdoo-drapery-hardware-main-section" >
+  <div class="outdoo-drapery-hardware-inner-section" >
+    {% if section.settings.title != blank %}<div class="outdoo-drapery-hardware-main-title" >
+      <h2 class="page-heading" >{{ section.settings.title }}</h2>
+    </div>{% endif %}
+    <div class="outdoo-drapery-hardware-sample-section" >
+      <div class="outdoo-drapery-hardware-sample-item" >
+        {% if section.settings.sample_main_title != blank %}<div class="outdoo-drapery-hardware-sample-title" >{{ section.settings.sample_main_title }}</div>{% endif %}
+         {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'sample' -%}
+              {% if block.settings.sample_image != blank %}<div class="outdoo-drapery-hardware-item-list" >
+                <div class="outdoo-drapery-hardware-item-content" >
+                  {% if block.settings.sample_title != blank %}<div class="outdoo-drapery-hardware-item-title" >{{ block.settings.sample_title }}</div>{% endif %}
+                  <div class="outdoo-drapery-hardware-item-img" ><img src="{{ block.settings.sample_image | img_url: 'master' }}" alt="{{ block.settings.sample_image.alt }}" width="100%" height="auto" /></div>
+                </div>
+              </div>{% endif %}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+      <div class="outdoo-drapery-hardware-sample-item" >
+        {% if section.settings.colors_main_title != blank %}<div class="outdoo-drapery-hardware-sample-title" >{{ section.settings.colors_main_title }}</div>{% endif %}
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'color_sample' -%}
+              {% if block.settings.color_image != blank %}<div class="outdoo-drapery-hardware-item-list" >
+                <div class="outdoo-drapery-hardware-item-content" >
+                  <div class="outdoo-drapery-hardware-item-img" ><img src="{{ block.settings.color_image | img_url: 'master' }}" alt="{{ block.settings.color_image.alt }}" width="100%" height="auto" /></div>
+                  {% if block.settings.color_title != blank %}<div class="outdoo-drapery-hardware-item-title" >{{ block.settings.color_title }}</div>{% endif %}
+                </div>
+              </div>{% endif %}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="outdoo-drapery-hardware-rods-prices" >
+      <div class="outdoo-drapery-hardware-rods-items" >
+        {% if section.settings.rods_prices_title != blank %}<div class="outdoo-drapery-hardware-rods-prices-title" >
+          {{ section.settings.rods_prices_title }}
+        </div>{% endif %}
+        <div class="outdoo-drapery-hardware-item-listing" >
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'rods_prices' -%}
+               {% if block.settings.rod_price != blank %}<p class="outdoo-drapery-hardware-item-price" >{{ block.settings.rod_price }}</p>{% endif %}
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Outdoor Drapery Hardware",
+  "tag": "section",
+  "class": "outdoor-drapery-hardware",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title",
+      "default": "DuraRod - 1.25\" Aluminum Powder Coated Rods"
+    },
+    {
+      "type": "text",
+      "label": "Sample Main Title",
+      "id": "sample_main_title"
+    },
+    {
+      "type": "text",
+      "label": "Colors Main Title",
+      "id": "colors_main_title"
+    },
+    {
+      "type": "text",
+      "label": "Rods Prices Title",
+      "id": "rods_prices_title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sample",
+      "name": "Sample",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Sample Title",
+          "id": "sample_title"
+        },
+        {
+          "type": "image_picker",
+          "label": "Sample Image",
+          "id": "sample_image"
+        }
+      ]
+    },
+    {
+      "type": "color_sample",
+      "name": "Color Sample",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Color Title",
+          "id": "color_title"
+        },
+        {
+          "type": "image_picker",
+          "label": "Color Image",
+          "id": "color_image"
+        }
+      ]
+    },
+    {
+      "type": "rods_prices",
+      "name": "Rods Prices",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Rod Price",
+          "id": "rod_price"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Outdoor Drapery Hardware"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

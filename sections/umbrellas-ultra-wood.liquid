@@ -1,0 +1,160 @@
+<div class="umbrellas-ultra-wood-main-section" >
+  <div class="umbrellas-ultra-wood-inner-section" >
+    <div class="umbrellas-ultra-wood-content" >
+      <div class="umbrellas-ultra-wood-images-section" >
+        <div class="umbrellas-ultra-wood-images-box" >
+          <div class="umbrellas-ultra-wood-images-box-inner" >
+            <div class="umbrellas-ultra-wood-image" >
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+            {%- when 'images' -%}
+              <div class="umbrellas-ultra-wood-image-item uuw-image-item-{{ forloop.index }}" >
+                <img src="{{ block.settings.only_image | img_url: 'master' }}" class="umbrellas-ultra-wood-item-image" alt="{{ block.settings.only_image.alt }}" width="auto" height="auto" />
+              </div>
+                {%- endcase -%}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="umbrellas-ultra-wood-design-options" >
+        <div class="umbrellas-ultra-wood-design-inner" >
+          {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Features' %}
+                <p align="center" class="SubTitle" style="padding:20px 0 0 0;margin: 0 0 10px;">{{ block.settings.umbrellas_options }}</p>
+                  {% break %}
+                  {% endif %}
+                  {% endcase %}
+            {% endfor %}
+          <div class="umbrellas-ultra-wood-design-items" >
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Features' %}
+            <div class="umbrellas-ultra-wood-design-item" >
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="" width="auto" height="85" class="umbrellas-ultra-wood-design-image" />
+              <h3 class="umbrellas-ultra-wood-design-title" >{{ block.settings.title }}</h3>
+            </div>
+                  {% endif %}
+                {% endcase %}
+            {% endfor %}
+          </div>
+          {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Optional Features' %}
+                <p align="center" class="SubTitle" style="padding:20px 0 0 0;margin: 0 0 10px;">{{ block.settings.umbrellas_options }}</p>
+                  {% break %}
+                  {% endif %}
+                  {% endcase %}
+            {% endfor %}
+          <div class="umbrellas-ultra-wood-design-items" >
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Optional Features' %}
+            <div class="umbrellas-ultra-wood-design-item" >
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="" width="auto" height="85" class="umbrellas-ultra-wood-design-image" />
+              <h3 class="umbrellas-ultra-wood-design-title" >{{ block.settings.title }}</h3>
+            </div>
+                  {% endif %}
+                {% endcase %}
+            {% endfor %}
+          </div>
+          {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Available Bases' %}
+                <p align="center" class="SubTitle" style="padding:20px 0 0 0;margin: 0 0 10px;">{{ block.settings.umbrellas_options }}</p>
+                  {% break %}
+                  {% endif %}
+                  {% endcase %}
+            {% endfor %}
+          <div class="umbrellas-ultra-wood-design-items" >
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Available Bases' %}
+            <div class="umbrellas-ultra-wood-design-item" >
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="" width="auto" height="85" class="umbrellas-ultra-wood-design-image" />
+              <h3 class="umbrellas-ultra-wood-design-title" >{{ block.settings.title }}</h3>
+            </div>
+                  {% endif %}
+                {% endcase %}
+            {% endfor %}
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Umbrellas - Ultra Wood",
+  "tag": "section",
+  "class": "umbrellas-ultra-wood-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "images",
+      "name": "Images",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Only Image",
+          "id": "only_image"
+        }
+      ]
+    },
+    {
+      "type": "umbrellas",
+      "name": "Umbrellas",
+      "settings": [
+        {
+          "type": "richtext",
+          "label": "Title",
+          "id": "title"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        },
+        {
+          "type": "select",
+          "label": "Umbrellas Options",
+          "id": "umbrellas_options",
+          "options": [
+            {
+              "label": "Features",
+              "value": "Features"
+            },
+            {
+              "label": "Optional Features",
+              "value": "Optional Features"
+            },
+            {
+              "label": "Available Bases",
+              "value": "Available Bases"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Umbrellas - Ultra Wood"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,53 @@
+<div class="curtain-styles-main-section" >
+  <div class="curtain-styles-inner-section" >
+    {%- for block in section.blocks -%}
+      <div class="curtain-styles-items-section" >
+        <div class="curtain-styles-item" >
+          <div class="curtain-styles-title" >{{ block.settings.title }}</div>
+          <div class="curtain-styles-img-section" >
+            <div class="curtain-styles-image" >
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt }}" width="230" height="auto" />
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Curtain Styles",
+  "tag": "section",
+  "class": "curtain-styles",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "curtain_styles",
+      "name": "Curtain Styles",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Title",
+          "id": "title"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Curtain Styles"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

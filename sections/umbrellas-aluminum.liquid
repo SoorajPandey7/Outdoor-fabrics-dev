@@ -1,0 +1,164 @@
+<div class="umbrellas-durashade-aluminum-main-section" >
+  <div class="umbrellas-durashade-aluminum-inner-section" >
+    <div class="umbrellas-durashade-aluminum-content" >
+      <div class="umbrellas-durashade-aluminum-images-section" >
+        <div class="umbrellas-durashade-aluminum-images-box" >
+          <div class="umbrellas-durashade-aluminum-images-box-inner" >
+            <div class="umbrellas-durashade-aluminum-image" >
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+            {%- when 'images' -%}
+              <div class="umbrellas-durashade-aluminum-image-item uuw-image-item-{{ forloop.index }}" >
+                  <img src="{{ block.settings.on_image | img_url: 'master' }}" class="umbrellas-durashade-aluminum-item-image" alt="{{ block.settings.on_image.alt }}" width="auto" height="auto" />
+              </div>
+                {%- endcase -%}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="umbrellas-durashade-aluminum-design-options" >
+        <div class="umbrellas-durashade-aluminum-design-inner" >
+          {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Features' %}
+                <p align="center" class="SubTitle" style="padding:20px 0 0 0;margin: 0 0 10px;">{{ block.settings.umbrellas_options }}</p>
+                  {% break %}
+                  {% endif %}
+                  {% endcase %}
+            {% endfor %}
+          <div class="umbrellas-durashade-aluminum-design-items" >
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Features' %}
+            <div class="umbrellas-durashade-aluminum-design-item" >
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="" width="auto" height="85" class="umbrellas-durashade-aluminum-design-image" />
+              <h3 class="umbrellas-durashade-aluminum-design-title" >{{ block.settings.title }}</h3>
+            </div>
+                  {% endif %}
+                {% endcase %}
+            {% endfor %}
+          </div>
+          {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Optional Features' %}
+                <p align="center" class="SubTitle" style="padding:20px 0 0 0;margin: 0 0 10px;">{{ block.settings.umbrellas_options }}</p>
+                  {% break %}
+                  {% endif %}
+                  {% endcase %}
+            {% endfor %}
+          <div class="umbrellas-durashade-aluminum-design-items" >
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Optional Features' %}
+            <div class="umbrellas-durashade-aluminum-design-item" >
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="" width="auto" height="85" class="umbrellas-durashade-aluminum-design-image" />
+              <h3 class="umbrellas-durashade-aluminum-design-title" >{{ block.settings.title }}</h3>
+            </div>
+                  {% endif %}
+                {% endcase %}
+            {% endfor %}
+          </div>
+          {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Available Bases' %}
+                <p align="center" class="SubTitle" style="padding:20px 0 0 0;margin: 0 0 10px;">{{ block.settings.umbrellas_options }}</p>
+                  {% break %}
+                  {% endif %}
+                  {% endcase %}
+            {% endfor %}
+          <div class="umbrellas-durashade-aluminum-design-items" >
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+            {%- when 'umbrellas' -%}
+                {% if block.settings.umbrellas_options == 'Available Bases' %}
+            <div class="umbrellas-durashade-aluminum-design-item" >
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="" width="auto" height="auto" class="umbrellas-durashade-aluminum-design-image" />
+              <h3 class="umbrellas-durashade-aluminum-design-title" >{{ block.settings.title }}</h3>
+            </div>
+                  {% endif %}
+                {% endcase %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Umbrellas - Aluminum",
+  "tag": "section",
+  "class": "umbrellas-durashade-aluminum-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "images",
+      "name": "Images",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "ON Image",
+          "id": "on_image"
+        },
+        {
+          "type": "image_picker",
+          "label": "OFF Image",
+          "id": "off_image"
+        }
+      ]
+    },
+    {
+      "type": "umbrellas",
+      "name": "Umbrellas",
+      "settings": [
+        {
+          "type": "richtext",
+          "label": "Title",
+          "id": "title"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        },
+        {
+          "type": "select",
+          "label": "Umbrellas Options",
+          "id": "umbrellas_options",
+          "options": [
+            {
+              "label": "Features",
+              "value": "Features"
+            },
+            {
+              "label": "Optional Features",
+              "value": "Optional Features"
+            },
+            {
+              "label": "Available Bases",
+              "value": "Available Bases"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Umbrellas - Aluminum"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

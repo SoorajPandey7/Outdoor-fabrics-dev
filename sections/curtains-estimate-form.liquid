@@ -1,0 +1,764 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{%- liquid
+      assign contact_form_class = 'isolate page-width--narrow section-{{ section.id }}-padding'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in page-width--narrow section-{{ section.id }}-padding'
+      endif
+    -%}
+{%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {{- 'icon-success.svg' | inline_asset_content -}}
+          {{ 'templates.contact.form.post_success' | t }}
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+{% if section.settings.curtains_estimate != blank %}<h3 class="estimate-form-same-section">&nbsp;{{ section.settings.curtains_estimate }}&nbsp;</h3>{% endif %}
+        <fieldset id="Estimate1" style="display:block;">
+          
+          <div class="form-control-field">
+            <label for="height" class="form-control-field__label">{{ section.settings.height }}: <span class="depth-info">({{ section.settings.height_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[height]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[width]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity]" min="1" required class="form-control-field__input">
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.header_style }}:</label>
+            <select id="thickness-decimal" name="contact[header_style]" class="form-control-field__input" >
+              <option value="Pocket Rod">Pocket Rod</option>
+              <option value="Button-Hole Style">Button-Hole Style</option>
+              <option value="Tab Top">Tab Top</option>
+              <option value="Grommets">Grommets</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric]" required class="form-control-field__input">
+          </div>
+          
+          <p>
+            <a href="javascript:void(0);" onclick="ShowHide('Estimate2')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+          </p>
+          
+        </fieldset>
+  
+        <fieldset id="Estimate2" style="display:none;">
+                  
+          <div class="form-control-field">
+            <label for="height" class="form-control-field__label">{{ section.settings.height }}: <span class="depth-info">({{ section.settings.height_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[height2]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[width2]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity2]" min="1" required class="form-control-field__input">
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.header_style }}:</label>
+            <select id="thickness-decimal" name="contact[header_style2]" class="form-control-field__input" >
+              <option value="Pocket Rod">Pocket Rod</option>
+              <option value="Button-Hole Style">Button-Hole Style</option>
+              <option value="Tab Top">Tab Top</option>
+              <option value="Grommets">Grommets</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric2]" required class="form-control-field__input">
+          </div>
+            
+          <p>
+            <a href="javascript:void(0);" onclick="ShowHide('Estimate3')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+          </p>
+          
+        </fieldset>
+  
+        <fieldset id="Estimate3" style="display:none;">
+                    
+          <div class="form-control-field">
+            <label for="height" class="form-control-field__label">{{ section.settings.height }}: <span class="depth-info">({{ section.settings.height_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[height3]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[width3]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity3]" min="1" required class="form-control-field__input">
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.header_style }}:</label>
+            <select id="thickness-decimal" name="contact[header_style3]" class="form-control-field__input" >
+              <option value="Pocket Rod">Pocket Rod</option>
+              <option value="Button-Hole Style">Button-Hole Style</option>
+              <option value="Tab Top">Tab Top</option>
+              <option value="Grommets">Grommets</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric3]" required class="form-control-field__input">
+          </div>
+          
+          <p>
+            <a href="javascript:void(0);" onclick="ShowHide('Estimate4')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+          </p>
+          
+        </fieldset>
+  
+        <fieldset id="Estimate4" style="display:none;">
+                    
+          <div class="form-control-field">
+            <label for="height" class="form-control-field__label">{{ section.settings.height }}: <span class="depth-info">({{ section.settings.height_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[height4]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[width4]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity4]" min="1" required class="form-control-field__input">
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.header_style }}:</label>
+            <select id="thickness-decimal" name="contact[header_style4]" class="form-control-field__input" >
+              <option value="Pocket Rod">Pocket Rod</option>
+              <option value="Button-Hole Style">Button-Hole Style</option>
+              <option value="Tab Top">Tab Top</option>
+              <option value="Grommets">Grommets</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric4]" required class="form-control-field__input">
+          </div>
+          
+          <p>
+            <a href="javascript:void(0);" onclick="ShowHide('Estimate5')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+          </p>
+          
+        </fieldset>
+  
+        <fieldset id="Estimate5" style="display:none;">
+                    
+          <div class="form-control-field">
+            <label for="height" class="form-control-field__label">{{ section.settings.height }}: <span class="depth-info">({{ section.settings.height_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[height5]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[width5]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity5]" min="1" required class="form-control-field__input">
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.header_style }}:</label>
+            <select id="thickness-decimal" name="contact[header_style5]" class="form-control-field__input" >
+              <option value="Pocket Rod">Pocket Rod</option>
+              <option value="Button-Hole Style">Button-Hole Style</option>
+              <option value="Tab Top">Tab Top</option>
+              <option value="Grommets">Grommets</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric5]" required class="form-control-field__input">
+          </div>
+          
+          <p>
+            <a href="javascript:void(0);" onclick="ShowHide('Estimate6')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+          </p>
+          
+        </fieldset>
+  
+        <fieldset id="Estimate6" style="display:none;">
+                    
+          <div class="form-control-field">
+            <label for="height" class="form-control-field__label">{{ section.settings.height }}: <span class="depth-info">({{ section.settings.height_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[height6]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[width6]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity6]" min="1" required class="form-control-field__input">
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.header_style }}:</label>
+            <select id="thickness-decimal" name="contact[header_style6]" class="form-control-field__input" >
+              <option value="Pocket Rod">Pocket Rod</option>
+              <option value="Button-Hole Style">Button-Hole Style</option>
+              <option value="Tab Top">Tab Top</option>
+              <option value="Grommets">Grommets</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric6]" required class="form-control-field__input">
+          </div>
+          
+          <p>
+            <a href="javascript:void(0);" onclick="ShowHide('Estimate7')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+          </p>
+          
+        </fieldset>
+  
+        <fieldset id="Estimate7" style="display:none;">
+                    
+          <div class="form-control-field">
+            <label for="height" class="form-control-field__label">{{ section.settings.height }}: <span class="depth-info">({{ section.settings.height_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[height7]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[width7]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity7]" min="1" required class="form-control-field__input">
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.header_style }}:</label>
+            <select id="thickness-decimal" name="contact[header_style7]" class="form-control-field__input" >
+              <option value="Pocket Rod">Pocket Rod</option>
+              <option value="Button-Hole Style">Button-Hole Style</option>
+              <option value="Tab Top">Tab Top</option>
+              <option value="Grommets">Grommets</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric7]" required class="form-control-field__input">
+          </div>
+          
+          <p>
+            <a href="javascript:void(0);" onclick="ShowHide('Estimate8')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+          </p>
+          
+        </fieldset>
+  
+        <fieldset id="Estimate8" style="display:none;">
+                    
+          <div class="form-control-field">
+            <label for="height" class="form-control-field__label">{{ section.settings.height }}: <span class="depth-info">({{ section.settings.height_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[height8]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[width8]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity8]" min="1" required class="form-control-field__input">
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.header_style }}:</label>
+            <select id="thickness-decimal" name="contact[header_style8]" class="form-control-field__input" >
+              <option value="Pocket Rod">Pocket Rod</option>
+              <option value="Button-Hole Style">Button-Hole Style</option>
+              <option value="Tab Top">Tab Top</option>
+              <option value="Grommets">Grommets</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric8]" required class="form-control-field__input">
+          </div>
+          
+          <p>
+            <a href="javascript:void(0);" onclick="ShowHide('Estimate9')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+          </p>
+          
+        </fieldset>
+  
+        <fieldset id="Estimate9" style="display:none;">
+                    
+          <div class="form-control-field">
+            <label for="height" class="form-control-field__label">{{ section.settings.height }}: <span class="depth-info">({{ section.settings.height_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[height9]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[width9]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity9]" min="1" required class="form-control-field__input">
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.header_style }}:</label>
+            <select id="thickness-decimal" name="contact[header_style9]" class="form-control-field__input" >
+              <option value="Pocket Rod">Pocket Rod</option>
+              <option value="Button-Hole Style">Button-Hole Style</option>
+              <option value="Tab Top">Tab Top</option>
+              <option value="Grommets">Grommets</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric9]" required class="form-control-field__input">
+          </div>
+          
+          <p>
+            <a href="javascript:void(0);" onclick="ShowHide('Estimate10')"><font style="color: #337ab7;cursor: pointer;line-height: 1.42857143;font-family: Abhaya Libre, serif;">{{ section.settings.more_estimate_forms_title }}</font></a>
+          </p>
+          
+        </fieldset>
+  
+        <fieldset id="Estimate10" style="display:none;">
+                    
+          <div class="form-control-field">
+            <label for="height" class="form-control-field__label">{{ section.settings.height }}: <span class="depth-info">({{ section.settings.height_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[height10]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="width" class="form-control-field__label" >{{ section.settings.width }}: <span class="depth-info">({{ section.settings.width_info }})</span></label>
+            <div class="hw_new-fields">
+              <input type="text" id="style" name="contact[width10]" required class="form-control-field__input">
+              <span class="depth-unit" >({{ section.settings.width_height_thickness_unit_text }})</span>
+            </div>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.quantity }}:</label>
+            <input type="number" id="quantity" name="contact[quantity10]" min="1" required class="form-control-field__input">
+          </div>
+          
+          <div class="form-control-field">
+            <label for="quantity" class="form-control-field__label">{{ section.settings.header_style }}:</label>
+            <select id="thickness-decimal" name="contact[header_style10]" class="form-control-field__input" >
+              <option value="Pocket Rod">Pocket Rod</option>
+              <option value="Button-Hole Style">Button-Hole Style</option>
+              <option value="Tab Top">Tab Top</option>
+              <option value="Grommets">Grommets</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-control-field">
+            <label for="fabric" class="form-control-field__label">{{ section.settings.fabric_pattern }}:</label>
+            <input type="text" id="fabric" name="contact[fabric10]" required class="form-control-field__input">
+          </div>
+          
+        </fieldset>
+  
+  <fieldset>
+    {% if section.settings.your_information != blank %}<h3 class="estimate-form-same-section">&nbsp;{{ section.settings.your_information }}&nbsp;</h3>{% endif %}
+    {% if section.settings.note_description != blank %}<div class="note-details-section" >
+  <p style="text-align:left; margin-top: 20px;"><b>{% if section.settings.note != blank %}{{ section.settings.note }}{% else %}Note{% endif %}:</b> {{ section.settings.note_description }}</p>
+</div>{% endif %}
+        <div class="form-control-field">
+          <label class="form-control-field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}:</label>
+          <input
+            class="form-control-field__input"
+            autocomplete="name"
+            type="text"
+            id="ContactForm-name"
+            name="contact[{{ 'templates.contact.form.name' | t }}]"
+            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+          >
+        </div>
+        <div class="form-control-field">
+          <label class="form-control-field__label" for="ContactForm-phone">Company:</label>
+          <input
+            type="text"
+            id="ContactForm-subject"
+            class="form-control-field__input"
+            name="contact[company]"
+            value=""
+          >
+        </div>
+        <div class="form-control-field field--with-error">
+          <label class="form-control-field__label" for="ContactForm-email">
+            Your Email:
+            {% comment %}<span aria-hidden="true">*</span>{% endcomment %}</label
+          >
+          <input
+            autocomplete="email"
+            type="email"
+            id="ContactForm-email"
+            class="form-control-field__input"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="ContactForm-email-error"
+            {% endif %}
+          >
+          
+          {%- if form.errors contains 'email' -%}
+            <small class="contact__field-error" id="ContactForm-email-error">
+              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+              <span class="form__message">
+                <span class="svg-wrapper">
+                  {{- 'icon-error.svg' | inline_asset_content -}}
+                </span>
+                {{- form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email -}}
+              </span>
+            </small>
+          {%- endif -%}
+        </div>
+      <div class="form-control-field">
+        <label class="form__label form-control-field__label" for="ContactForm-body">
+          Comments:
+        </label>
+        <div class="cus-form-control-field__input" >
+        <textarea
+          rows="10"
+          id="ContactForm-body"
+          class="text-area form-control-field__input"
+          name="contact[comments]"
+        >
+          {{- form.body -}}
+        </textarea>
+        
+        </div>
+      </div>
+  <div class="contact__button">
+        <button type="submit" class="underlined-link">
+          {% if section.settings.submit != blank %}{{ section.settings.submit }}{% else %}Submit{% endif %}
+        </button>
+      </div>
+  </fieldset>
+    {%- endform -%}
+<style>
+    form {
+        width: 100%;
+        max-width: 600px;
+        margin: auto;
+        font-family: Arial, sans-serif;
+    }
+    fieldset {
+        border: none;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background-color: #444;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #222;
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Curtains Estimate Form",
+  "tag": "section",
+  "class": "curtains-estimate-form-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "label": "Curtains Estimate Title",
+      "id": "curtains_estimate",
+      "default": "Custom Drapery Panels Estimate Request"
+    },
+    {
+      "type": "text",
+      "label": "Width",
+      "id": "width",
+      "default": "Width"
+    },
+    {
+      "type": "text",
+      "label": "Width Info",
+      "id": "width_info",
+      "default": "left to right"
+    },
+    {
+      "type": "text",
+      "label": "Height",
+      "id": "height",
+      "default": "Height"
+    },
+    {
+      "type": "text",
+      "label": "Height Info",
+      "id": "height_info",
+      "default": "Height"
+    },
+    {
+      "type": "text",
+      "label": "Width, height Unit Text",
+      "id": "width_height_thickness_unit_text",
+      "default": "in inches"
+    },
+    {
+      "type": "text",
+      "label": "Quantity",
+      "id": "quantity"
+    },
+    {
+      "type": "text",
+      "label": "Header Style",
+      "id": "header_style",
+      "default": "Header"
+    },
+    {
+      "type": "text",
+      "label": "Fabric Pattern",
+      "id": "fabric_pattern",
+      "default": "Fabric Pattern"
+    },
+    {
+      "type": "text",
+      "label": "More estimate forms Title",
+      "id": "more_estimate_forms_title",
+      "default": "- click here for more estimate forms -"
+    },
+    {
+      "type": "text",
+      "label": "Your Information",
+      "id": "your_information",
+      "default": "Your Information"
+    },
+    {
+      "type": "text",
+      "label": "Your Name",
+      "id": "your_name",
+      "default": "Your Name"
+    },
+    {
+      "type": "text",
+      "label": "Company",
+      "id": "company",
+      "default": "Company"
+    },
+    {
+      "type": "text",
+      "label": "Your Email",
+      "id": "your_email",
+      "default": "Your Email"
+    },
+    {
+      "type": "text",
+      "label": "Comments",
+      "id": "comments",
+      "default": "Comments"
+    },
+    {
+      "type": "text",
+      "label": "Submit",
+      "id": "submit",
+      "default": "Submit"
+    },
+    {
+      "type": "text",
+      "label": "NOTE",
+      "id": "note",
+      "default": "NOTE"
+    },
+    {
+      "type": "text",
+      "label": "Note Description",
+      "id": "note_description",
+      "default": "If you need to request an estimate on more custom cushions, please specify so in the \"Comments\" section of this form."
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Curtains Estimate Form"
+    }
+  ]
+}
+{% endschema %}
+<script>
+  function ShowHide(custom_id) {
+    $('#'+custom_id).toggle
+    $('#'+custom_id).slideToggle(300);
+}
+</script>
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

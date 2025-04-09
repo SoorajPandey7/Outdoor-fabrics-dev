@@ -1,0 +1,115 @@
+<div class="decorating-studio-main-section" >
+  <div class="decorating-studio-inner-section" >
+    <div class="decorating-studio-animation-section" >
+      <div class="decorating-studio-slider-animation-section" >
+        <div class="decorating-studio-sliderinner-section" >
+            <div class="decorating-studio-image-section" >
+              <img class="decorating-studio-img" name="curtain" src="https://cdn.shopify.com/s/files/1/0641/0466/1162/files/curtain_white.jpg?v=1742498644" alt="Decorating Studio" />
+            </div>
+        </div>
+      </div>
+      <div class="decorating-studio-thumbnail-main-section" >
+        <div class="decorating-studio-thumbnail-inner-section" >
+          <div class="decorating-studio-thumbnail-title-section" >
+            <h3 class="decorating-studio-thumbnail-head" >{{ section.settings.fabrics_option_title }}</h3>
+          </div>
+          <div class="decorating-studio-thumbnail-items" >
+            <div class="decorating-studio-thumbnail-items-inner" >
+              {%- for block in section.blocks -%}
+                {% if block.settings.fabrics_options == 'printed-fabrics' %}
+                  <div class="decorating-studio-thumbnail-image-section" >
+                    <img class="decorating-studio-thumbnail-img" src="{{ block.settings.thumbnail_image | img_url: 'master' }}" onmouseover="document.curtain.src='{{ block.settings.main_image | img_url: 'master' }}'" alt="{{ block.settings.thumbnail_image.alt }}" width="100%" height="auto" />
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+        <div class="decorating-studio-thumbnail-inner-section" >
+          <div class="decorating-studio-thumbnail-title-section" >
+            <h3 class="decorating-studio-thumbnail-head" >{{ section.settings.fabrics_option_title }}</h3>
+          </div>
+          <div class="decorating-studio-thumbnail-items" >
+            <div class="decorating-studio-thumbnail-items-inner" >
+              {%- for block in section.blocks -%}
+                {% if block.settings.fabrics_options == 'solid-fabrics' %}
+                  <div class="decorating-studio-thumbnail-image-section" >
+                    <img class="decorating-studio-thumbnail-img" src="{{ block.settings.thumbnail_image | img_url: 'master' }}" onmouseover="document.curtain.src='{{ block.settings.main_image | img_url: 'master' }}'" alt="{{ block.settings.thumbnail_image.alt }}" width="{{ block.settings.thumbnail_image.width }}" height="{{ block.settings.thumbnail_image.height }}" />
+                  </div>
+                {% endif %}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="decorating-studio-disclaimer-section" >
+      <div class="disclaimer bottom-shadow" >
+        {{ section.settings.decorating_studio_description }}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Decorating Studio",
+  "tag": "section",
+  "class": "decorating-studio-section",
+  "settings": [
+    {
+      "type": "richtext",
+      "label": "Decorating Studio Description",
+      "id": "decorating_studio_description"
+    },
+    {
+      "type": "text",
+      "label": "Fabrics Option Title",
+      "id": "fabrics_option_title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "decorating_studio",
+      "name": "Decorating Studio",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Main Image",
+          "id": "main_image"
+        },
+        {
+          "type": "image_picker",
+          "label": "Thumbnail Image",
+          "id": "thumbnail_image"
+        },
+        {
+          "type": "select",
+          "label": "Fabrics Options",
+          "id": "fabrics_options",
+          "options": [
+            {
+              "label": "Printed Fabrics",
+              "value": "printed-fabrics"
+            },
+            {
+              "label": "Solid Fabrics",
+              "value": "solid-fabrics"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Decorating Studio"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
